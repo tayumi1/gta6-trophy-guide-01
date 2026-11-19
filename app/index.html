@@ -3,23 +3,84 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>Leonida Trophy Atlas — GTA 6 Trophy Guide &amp; Tracker</title>
+<meta name="description" content="An offline guide and tracker for all 55 PlayStation 5 trophies of Grand Theft Auto VI: cited guides, a roadmap to the platinum, missable flags, filters and a spoiler setting.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c1024'/%3E%3Ctext x='16' y='23' font-size='18' text-anchor='middle' fill='%23ffd166' font-family='sans-serif' font-weight='bold'%3EL%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="masthead">
+  <div class="masthead-text">
+    <p class="kicker">Grand Theft Auto VI &middot; PlayStation 5 &middot; 55 trophies</p>
+    <h1>Leonida Trophy Atlas</h1>
+    <p class="tagline">Every trophy, a guide in plain words with its source, a roadmap to the platinum, and a checklist that remembers you.</p>
+  </div>
+  <div class="progress-card" id="progress-card" aria-label="Progress">
+    <div class="progress-ring" id="progress-ring"><span id="progress-pct">0%</span></div>
+    <p class="progress-count" id="progress-count">0 of 55 earned</p>
+    <p class="progress-grades" id="progress-grades"></p>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
+
+<div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progress-fill"></div></div>
+
+<section class="controls" aria-label="Tracker controls">
+  <label class="search-label">Search <input id="search" type="search" placeholder="Trophy, mission, place…" autocomplete="off"></label>
+  <div class="filters" id="filters" role="group" aria-label="Filter by kind">
+    <button type="button" data-kind="all" class="chip active">All 55</button>
+    <button type="button" data-kind="story" class="chip">Story</button>
+    <button type="button" data-kind="missable" class="chip">Missable</button>
+    <button type="button" data-kind="collectibles" class="chip">Collectibles</button>
+    <button type="button" data-kind="activities" class="chip">Activities</button>
+    <button type="button" data-kind="online" class="chip">Online</button>
+  </div>
+  <label class="grade-label">Grade
+    <select id="grade">
+      <option value="all">All grades</option>
+      <option value="platinum">Platinum</option>
+      <option value="gold">Gold</option>
+      <option value="silver">Silver</option>
+      <option value="bronze">Bronze</option>
+    </select>
+  </label>
+  <label class="grade-label">Sort
+    <select id="sort">
+      <option value="roadmap">Roadmap order</option>
+      <option value="name">Name A–Z</option>
+      <option value="grade">Grade, best first</option>
+    </select>
+  </label>
+  <label class="toggle"><input id="spoiler" type="checkbox"> Hide story spoilers</label>
+  <div class="io-buttons">
+    <button id="export" type="button">Export progress</button>
+    <label class="import-button">Import progress <input id="import" type="file" accept="application/json,.json"></label>
+    <button id="reset" type="button">Reset</button>
+  </div>
+</section>
+
+<aside class="missable-banner" id="missable-banner">
+  <strong>One trophy can be missed.</strong>
+  <span><a href="#trophy-28">Positive Mental Attitude</a> needs Lucia&rsquo;s balcony meditation in Chapter 1 — it is gone once the chapter ends, and there is no mission replay. Everything else stays open after the credits. Keep a manual save at the start of every chapter, and never use cheats on your trophy save.</span>
+</aside>
+
+<section class="roadmap" id="roadmap" aria-label="Roadmap to the platinum">
+  <h2>Roadmap to the platinum</h2>
+  <p class="roadmap-intro">Six stages, in the order to play them. Every trophy sits in exactly one stage, built from the official descriptions: story chapters and missions first, then side stories, then the open world, then the grind, then 100%.</p>
+  <ol class="stages" id="stages"></ol>
+</section>
+
+<main>
+  <h2 class="list-heading">The trophy list <span id="list-count"></span></h2>
+  <p class="list-note" id="list-note"></p>
+  <div class="trophy-grid" id="trophy-grid"></div>
+  <p class="empty-state" id="empty-state" hidden></p>
+</main>
+
+<footer>
+  <h2>About this guide</h2>
+  <p>Trophy names, descriptions and grades are the official PlayStation list (1 platinum, 2 gold, 6 silver, 46 bronze; 28 hidden), as listed by Exophase and PSNProfiles and cross-checked by PlanetGTA6. Every guide is written in our own words for this page and names its source beside it — a link opens only if you follow it; this page fetches nothing while it runs. Five trophies had no confirmed unlock method at launch (In The Beginning…, Capital Offense, Bad Luck, I Guess, The Truth Is Out There, Ten Pin); their guides say so plainly and give the best reading of the official description. This is an unofficial fan guide. Grand Theft Auto and GTA are trademarks of Take-Two Interactive; no Rockstar logo, artwork or game screenshot is used here.</p>
+  <p class="sources-line">Main sources: Push Square — GTA 6: Trophy Guide &amp; Roadmap · Output Lag — GTA 6 Trophy List · KeenGamer — GTA 6 Trophy Guide &amp; Platinum Roadmap · PlanetGTA6 — GTA 6 Trophies. Progress is saved only in your browser (localStorage) and in the file you export.</p>
+</footer>
 <script type="module" src="app.js"></script>
 </body>
 </html>
